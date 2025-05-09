@@ -1,2 +1,2 @@
 # Modulo-Administrativo
-Modulo 6 - parte Administrativa de ECI Bienestar Total
+Modulo 6 - Parte Administrativa de ECI Bienestar Total
