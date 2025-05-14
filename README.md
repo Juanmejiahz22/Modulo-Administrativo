@@ -220,7 +220,7 @@ Los horarios de pausa deben estar dentro del horario principal configurado
 ## Instalación y Configuración
 
 Clonar el repositorio
-bashgit clone https://github.com/tu-organizacion/bienestar-universitario.git
+bashgit clone [https://github.com/tu-organizacion/bienestar-universitario.git](https://github.com/Juanmejiahz22/Modulo-Administrativo/edit/main/README.md)
 cd bienestar-universitario/modulo-gestion-usuarios
 
 Instalamos las dependencias
