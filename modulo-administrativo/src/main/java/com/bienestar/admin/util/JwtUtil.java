@@ -13,9 +13,9 @@ public class JwtUtil {
     private String secret;
 
     @Value("${jwt.expiration}")
-    private long expiration;
+    private String expiration;
 
-    public String generarToken(Long idUsuario, String rol) {
+    public String generarToken(String idUsuario, String rol) {
         return Jwts.builder()
                 .setSubject(String.valueOf(idUsuario))
                 .claim("rol", rol)

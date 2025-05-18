@@ -1,20 +1,22 @@
 package com.bienestar.admin.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+import java.time.LocalDate;
+
+@Document(collection = "usuarios")
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    private String correo;
-    private String telefono;
     private String rol;
-    private String contraseña;
     private String nombreCompleto;
+    private String correo;
+    private String contraseña;
     private String cedula;
+    private String telefono;
     private String celular;
     private String contactoEmergencia;
     private String genero;
@@ -24,50 +26,126 @@ public class Usuario {
     private String estadoCivil;
     private String tipoUsuario;
 
+    // ==== Getters y Setters ====
 
-    // Getters y setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public String getRol() {
+        return rol;
+    }
 
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
-    public String getContraseña() { return contraseña; }
-    public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
 
-    public String getNombreCompleto() { return nombreCompleto; }
-    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
 
-    public String getCedula() { return cedula; }
-    public void setCedula(String cedula) { this.cedula = cedula; }
+    public String getCorreo() {
+        return correo;
+    }
 
-    public String getCelular() { return celular; }
-    public void setCelular(String celular) { this.celular = celular; }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    public String getContactoEmergencia() { return contactoEmergencia; }
-    public void setContactoEmergencia(String contactoEmergencia) { this.contactoEmergencia = contactoEmergencia; }
+    public String getContraseña() {
+        return contraseña;
+    }
 
-    public String getGenero() { return genero; }
-    public void setGenero(String genero) { this.genero = genero; }
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
 
-    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
-    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    public String getCedula() {
+        return cedula;
+    }
 
-    public String getEps() { return eps; }
-    public void setEps(String eps) { this.eps = eps; }
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 
-    public String getRh() { return rh; }
-    public void setRh(String rh) { this.rh = rh; }
+    public String getTelefono() {
+        return telefono;
+    }
 
-    public String getEstadoCivil() { return estadoCivil; }
-    public void setEstadoCivil(String estadoCivil) { this.estadoCivil = estadoCivil; }
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-    public String getTipoUsuario() { return tipoUsuario; }
-    public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario; }
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getContactoEmergencia() {
+        return contactoEmergencia;
+    }
+
+    public void setContactoEmergencia(String contactoEmergencia) {
+        this.contactoEmergencia = contactoEmergencia;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getEps() {
+        return eps;
+    }
+
+    public void setEps(String eps) {
+        this.eps = eps;
+    }
+
+    public String getRh() {
+        return rh;
+    }
+
+    public void setRh(String rh) {
+        this.rh = rh;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 }
+

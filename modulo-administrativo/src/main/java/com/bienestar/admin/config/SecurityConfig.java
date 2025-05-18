@@ -1,4 +1,4 @@
-package com.bienestar.admin.config;
+/*package com.bienestar.admin.config;
 
 import com.bienestar.admin.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +21,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
-}
+}*/
