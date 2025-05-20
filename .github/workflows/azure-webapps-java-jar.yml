@@ -48,6 +48,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+        working-directory: modulo-administrativo
 
 
       - name: Upload artifact for deployment job
