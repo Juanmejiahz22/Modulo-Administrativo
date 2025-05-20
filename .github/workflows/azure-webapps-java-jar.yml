@@ -47,7 +47,6 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        working-directory: modulo-administrativo
         run: mvn clean install
 
 
