@@ -45,6 +45,8 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.DISTRIBUTION }}
           cache: 'maven'
+          working-directory: modulo-administrativo
+
 
       - name: Build with Maven
         run: mvn clean install
