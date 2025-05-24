@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: modulo-administrativo/target/modulo-administrativo-1.0.0.jar
+          path: modulo-administrativo/target/app.jar
           if-no-files-found: error
           retention-days: 1
 
@@ -79,7 +79,8 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: modulo-administrativo-1.0.0.jar
+          package: app.jar
+
 
 # Trigger redeploy - 2025-05-24
 
