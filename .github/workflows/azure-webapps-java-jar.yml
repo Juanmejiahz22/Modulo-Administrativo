@@ -47,8 +47,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn -f modulo-administrativo/pom.xml clean install && mv modulo-administrativo/target/modulo-administrativo-1.0.0.jar modulo-administrativo/target/app.jar
-
+        run: mvn -f modulo-administrativo/pom.xml clean install
 
 
       - name: Upload artifact for deployment job
