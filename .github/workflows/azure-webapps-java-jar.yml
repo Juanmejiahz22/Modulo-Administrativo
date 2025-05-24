@@ -55,6 +55,8 @@ jobs:
         with:
           name: java-app
           path: modulo-administrativo/target/modulo-administrativo-1.0.0.jar
+          if-no-files-found: error
+          retention-days: 1
 
   deploy:
     permissions:
@@ -77,7 +79,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: 'java-app/*.jar'
+          package: java-app/modulo-administrativo-1.0.0.jar
 
 
 
