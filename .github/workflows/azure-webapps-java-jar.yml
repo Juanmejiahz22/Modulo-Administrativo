@@ -57,7 +57,7 @@ jobs:
           name: java-app
           path: modulo-administrativo/target/app.jar
           if-no-files-found: error
-          retention-days: 1
+          
 
   deploy:
     permissions:
