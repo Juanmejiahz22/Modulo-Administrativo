@@ -20,7 +20,7 @@
 name: Build and deploy JAR app to Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: modulo-administrativo-gpdpqdybkc6byg5h3
+  AZURE_WEBAPP_NAME: modulo-administrativo
   JAVA_VERSION: '17'
   DISTRIBUTION: zulu
 
