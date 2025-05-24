@@ -64,7 +64,6 @@
     </dependencies>
 
     <build>
-        <finalName>app</finalName> <!-- Esto genera app.jar -->
         <plugins>
             <!-- Plugin de Spring Boot -->
             <plugin>
