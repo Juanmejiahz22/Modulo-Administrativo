@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: modulo-administrativo/target/*.jar
+          path: modulo-administrativo/target/modulo-administrativo-1.0.0.jar
 
   deploy:
     permissions:
