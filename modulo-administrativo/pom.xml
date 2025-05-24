@@ -66,12 +66,23 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Spring Boot plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+    <plugins>
+        <!-- Plugin de Spring Boot -->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>2.7.18</version>
+            <configuration>
+                <mainClass>com.bienestar.admin.AdminApplication</mainClass>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 
             <!-- JaCoCo para cobertura -->
             <plugin>
