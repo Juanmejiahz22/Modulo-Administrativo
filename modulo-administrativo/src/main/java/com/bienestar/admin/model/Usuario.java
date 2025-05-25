@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "usuarios")
 public class Usuario {
@@ -14,6 +15,8 @@ public class Usuario {
     private String rol;
     private String nombreCompleto;
     private String correo;
+
+    @Field("contrasena")
     private String contrasena;
     private String cedula;
     private String telefono;

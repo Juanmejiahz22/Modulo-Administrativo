@@ -19,6 +19,7 @@ public class UsuarioService {
         System.out.println("Usuario encontrado: " + usuario);
         System.out.println("Contraseña recibida: " + contrasena);
         System.out.println("Contraseña en DB: " + (usuario != null ? usuario.getContrasena() : "null"));
+        System.out.println("getContrasena() == null? " + (usuario.getContrasena() == null));
 
         if (usuario != null && usuario.getContrasena().trim().equals(contrasena.trim())) {
             return usuario;
