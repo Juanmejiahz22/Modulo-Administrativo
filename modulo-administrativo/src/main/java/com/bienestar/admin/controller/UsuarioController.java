@@ -39,7 +39,8 @@ public class UsuarioController {
                 datos.get("correo"),
                 datos.get("contrasena")
             );
-
+            System.out.println("ID del usuario: " + usuario.getId());
+            System.out.println("Rol del usuario: " + usuario.getRol());
             String token = jwtUtil.generarToken(usuario.getId(), usuario.getRol());
 
             System.out.println("TOKEN GENERADO: " + token); // <--- aquí
