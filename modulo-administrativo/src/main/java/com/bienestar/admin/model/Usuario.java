@@ -64,9 +64,10 @@ public class Usuario {
         return contrasena;
     }
 
-    public void setContrasena(String Contrasena) {
-        this.contrasena = Contrasena;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
+
 
     public String getCedula() {
         return cedula;
