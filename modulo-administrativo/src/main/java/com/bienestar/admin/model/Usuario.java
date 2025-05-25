@@ -1,9 +1,9 @@
 package com.bienestar.admin.model;
 
+import java.time.LocalDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDate;
 
 @Document(collection = "usuarios")
 public class Usuario {
@@ -14,7 +14,7 @@ public class Usuario {
     private String rol;
     private String nombreCompleto;
     private String correo;
-    private String contraseña;
+    private String contrasena;
     private String cedula;
     private String telefono;
     private String celular;
@@ -60,12 +60,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getcontrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setcontrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getCedula() {
