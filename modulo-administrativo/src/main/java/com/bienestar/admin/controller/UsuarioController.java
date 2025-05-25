@@ -33,11 +33,21 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> datos) {
-        Usuario usuario = usuarioService.autenticar(datos.get("correo"), datos.get("contraseña"));
-        String token = jwtUtil.generarToken(usuario.getId(), usuario.getRol());
-        return ResponseEntity.ok(Collections.singletonMap("token", token));
+        try {
+            Usuario usuario = usuarioService.autenticar(
+                datos.get("correo"), 
+                datos.get("contrasena") // ⚠️ Asegúrate de que en el frontend también sea "contrasena" sin ñ
+            );
+            String token = jwtUtil.generarToken(usuario.getId(), usuario.getRol());
+            return ResponseEntity.ok(Collections.singletonMap("token", token));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(Collections.singletonMap("mensaje", "Credenciales inválidas"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Collections.singletonMap("error", "Error inesperado: " + e.getMessage()));
+        }
     }
-
 
     @GetMapping("/perfil")
     public ResponseEntity<?> perfil(HttpServletRequest request) {
