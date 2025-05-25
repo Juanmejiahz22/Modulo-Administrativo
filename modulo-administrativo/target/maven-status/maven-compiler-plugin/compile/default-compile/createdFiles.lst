@@ -5,4 +5,5 @@ com\bienestar\admin\exception\GlobalExceptionHandler.class
 com\bienestar\admin\AdminApplication.class
 com\bienestar\admin\controller\UsuarioController.class
 com\bienestar\admin\service\UsuarioService.class
+com\bienestar\admin\controller\PingController.class
 com\bienestar\admin\filter\JwtFilter.class
