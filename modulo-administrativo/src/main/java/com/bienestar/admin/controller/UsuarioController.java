@@ -36,17 +36,22 @@ public class UsuarioController {
     public ResponseEntity<?> login(@RequestBody Map<String, String> datos) {
         try {
             Usuario usuario = usuarioService.autenticar(
-                datos.get("correo"), 
-                datos.get("contrasena") // ⚠️ Asegúrate de que en el frontend también sea "contrasena" sin ñ
+                datos.get("correo"),
+                datos.get("contrasena")
             );
+
             String token = jwtUtil.generarToken(usuario.getId(), usuario.getRol());
-            return ResponseEntity.ok(Collections.singletonMap("token", token));
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(Collections.singletonMap("mensaje", "Credenciales inválidas"));
+
+            System.out.println("TOKEN GENERADO: " + token); // <--- aquí
+
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            return ResponseEntity.ok(response);
+
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Collections.singletonMap("error", "Error inesperado: " + e.getMessage()));
+            System.out.println("Error en login: " + e.getMessage()); // <--- aquí
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Collections.singletonMap("mensaje", "Credenciales inválidas"));
         }
     }
 
