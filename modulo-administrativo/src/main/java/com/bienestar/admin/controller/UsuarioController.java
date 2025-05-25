@@ -50,10 +50,11 @@ public class UsuarioController {
             return ResponseEntity.ok(response);
 
         } catch (Exception e) {
-            System.out.println("Error en login: " + e.getMessage()); // <--- aquí
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Collections.singletonMap("mensaje", "Credenciales inválidas"));
+            e.printStackTrace();  // <-- Imprime el stack completo
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Collections.singletonMap("mensaje", "Error interno en el servidor"));
         }
+
     }
 
     @GetMapping("/perfil")
