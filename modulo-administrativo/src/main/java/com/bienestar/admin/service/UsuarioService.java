@@ -16,12 +16,17 @@ public class UsuarioService {
 
     public Usuario autenticar(String correo, String contrasena) {
         Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
+        System.out.println("Usuario encontrado: " + usuario);
+        System.out.println("Contraseña recibida: " + contrasena);
+        System.out.println("Contraseña en DB: " + (usuario != null ? usuario.getContrasena() : "null"));
+        
         if (usuario != null && usuario.getContrasena().equals(contrasena)) {
             return usuario;
         } else {
             throw new RuntimeException("Credenciales inválidas");
         }
     }
+
 
 
     public Usuario obtenerPorId(String id) {
