@@ -14,10 +14,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-     public Usuario autenticar(String correo, String contrasena) {
-        return usuarioRepository.findByCorreoAndContrasena(correo, contrasena)
-                .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
+    public Usuario autenticar(String correo, String contrasena) {
+        Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
+        if (usuario != null && usuario.getContrasena().equals(contrasena)) {
+            return usuario;
+        } else {
+            throw new RuntimeException("Credenciales inválidas");
+        }
     }
+
 
     public Usuario obtenerPorId(String id) {
         return usuarioRepository.findById(id)
