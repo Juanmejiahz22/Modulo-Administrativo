@@ -60,12 +60,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getcontrasena() {
+    public String getContrasena() {
         return contrasena;
     }
 
-    public void setcontrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setContrasena(String Contrasena) {
+        this.contrasena = Contrasena;
     }
 
     public String getCedula() {
