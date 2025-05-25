@@ -1,11 +1,12 @@
 package com.bienestar.admin.service;
 
-import com.bienestar.admin.model.Usuario;
-import com.bienestar.admin.repository.UsuarioRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.bienestar.admin.model.Usuario;
+import com.bienestar.admin.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -13,20 +14,15 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario autenticar(String correo, String contrasena) {
-        Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
-        if (usuario != null && usuario.getContrasena().equals(contrasena)) {
-            return usuario;
-        } else {
-            throw new RuntimeException("Credenciales inválidas");
-        }
+     public Usuario autenticar(String correo, String contrasena) {
+        return usuarioRepository.findByCorreoAndContrasena(correo, contrasena)
+                .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
     }
 
-
     public Usuario obtenerPorId(String id) {
-    return usuarioRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-}
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
 
 
     public List<Usuario> obtenerTodos() {
