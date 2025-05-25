@@ -10,7 +10,7 @@ import com.bienestar.admin.model.Usuario;
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
 
 
-    Optional<Usuario> findByCorreoAndContraseña(String correo, String contraseña);
+    Optional<Usuario> findByCorreoAndContrasena(String correo, String contrasena);
 
     Optional<Usuario> findByCorreo(String correo);
 
