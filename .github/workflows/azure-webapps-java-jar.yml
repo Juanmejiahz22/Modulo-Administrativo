@@ -74,13 +74,6 @@ jobs:
         with:
           name: java-app
        
-      - name: Move JAR to root for Azure deployment
-        run: |
-          JAR_PATH=$(find . -name "app.jar")
-          cp "$JAR_PATH" ./app.jar
-
-    
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
