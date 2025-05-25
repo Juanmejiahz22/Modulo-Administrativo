@@ -14,17 +14,19 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario autenticar(String correo, String contrasena) {
+        public Usuario autenticar(String correo, String contrasena) {
         Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
         System.out.println("Usuario encontrado: " + usuario);
         System.out.println("Contraseña recibida: " + contrasena);
         System.out.println("Contraseña en DB: " + (usuario != null ? usuario.getContrasena() : "null"));
-        
-        if (usuario != null) {
+
+        if (usuario != null && usuario.getContrasena().equals(contrasena)) {
             return usuario;
         }
 
+        throw new RuntimeException("Credenciales inválidas");
     }
+
 
 
 
