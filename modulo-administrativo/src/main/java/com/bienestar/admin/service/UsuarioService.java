@@ -15,7 +15,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
         public Usuario autenticar(String correo, String contrasena) {
-        Usuario usuario = usuarioRepository.findByCorreo(correo).orElse(null);
+        Usuario usuario = usuarioRepository.findByCorreo(correo.toLowerCase()).orElse(null);
         System.out.println("Usuario encontrado: " + usuario);
         System.out.println("Contraseña recibida: " + contrasena);
         System.out.println("Contraseña en DB: " + (usuario != null ? usuario.getContrasena() : "null"));

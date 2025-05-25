@@ -60,7 +60,7 @@ public class Usuario {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        this.correo = correo != null ? correo.toLowerCase() : null;
     }
 
     public String getContrasena() {
