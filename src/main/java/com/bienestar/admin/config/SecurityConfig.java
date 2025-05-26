@@ -1,11 +1,12 @@
-/*package com.bienestar.admin.config;
+package com.bienestar.admin.config;
 
-import com.bienestar.admin.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.bienestar.admin.filter.JwtFilter;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -15,10 +16,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-            .antMatchers("/api/usuarios/login").permitAll()
-            .anyRequest().authenticated()
+        http.csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/api/usuarios/login").permitAll() // permite login sin token
+                .anyRequest().authenticated() // requiere token para el resto
             .and()
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            .formLogin().disable() // evita redirección a /login (HTML)
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // aplica el filtro JWT
     }
-}*/
+}
