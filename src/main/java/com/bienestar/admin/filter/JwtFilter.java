@@ -22,16 +22,18 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+    protected void doFilterInternal(HttpServletRequest request,
+                                    HttpServletResponse response,
+                                    FilterChain chain)
             throws ServletException, IOException {
 
-        
+        // 1) Si vienen a /api/usuarios/login saltamos el filtro
         if (request.getServletPath().equals("/api/usuarios/login")) {
             chain.doFilter(request, response);
             return;
         }
 
-        
+        // 2) Para el resto: esperamos header Authorization: Bearer <token>
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
@@ -50,5 +52,6 @@ public class JwtFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
+
 
 }

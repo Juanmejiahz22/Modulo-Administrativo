@@ -1,27 +1,37 @@
 package com.bienestar.admin.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.bienestar.admin.filter.JwtFilter;
 
 @Configuration
+@EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    //@Autowired
-    //private JwtFilter jwtFilter;
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-            .authorizeRequests()
-            .anyRequest().permitAll();
-                /*.antMatchers("/api/usuarios/login").permitAll() // permite login sin token
-                .anyRequest().authenticated() // requiere token para todo lo demás
-            //.and()
-            .formLogin().disable() // desactiva formulario login por defecto
-            .httpBasic().disable(); //  evita que use autenticación básica
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); 
-        */
+        http
+          .csrf().disable()                      // deshabilita CSRF
+          .authorizeRequests()
+            .antMatchers("/api/usuarios/login")  // libera solo este endpoint
+              .permitAll()
+            .anyRequest()                        // el resto requiere token
+              .authenticated()
+          .and()
+          .formLogin().disable()                 // desactiva el login HTML
+          .httpBasic().disable();                // desactiva Basic Auth
+
+        // antes de que llegue UsernamePasswordAuthenticationFilter
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
+
 
