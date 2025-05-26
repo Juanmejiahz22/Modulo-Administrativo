@@ -18,10 +18,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/api/usuarios/login").permitAll() // permite login sin token
-                .anyRequest().authenticated() // requiere token para el resto
+            .antMatchers("/api/usuarios/login").permitAll() // deja pasar el login sin token
+            .anyRequest().authenticated() // lo demás sí exige autenticación
             .and()
-            .formLogin().disable() // evita redirección a /login (HTML)
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); // aplica el filtro JWT
+            .formLogin().disable(); // desactiva redirección HTML
+
+        // Asegúrate de poner el filtro después del authorizeRequests
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
