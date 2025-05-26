@@ -1,11 +1,12 @@
 package com.bienestar.admin.service;
 
-import com.bienestar.admin.model.Usuario;
-import com.bienestar.admin.repository.UsuarioRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.bienestar.admin.model.Usuario;
+import com.bienestar.admin.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -13,8 +14,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario autenticar(String correo, String contraseña) {
-        return usuarioRepository.findByCorreoAndContraseña(correo, contraseña)
+    public Usuario autenticar(String correo, String contrasena) {
+        return usuarioRepository.findByCorreoAndContrasena(correo, contrasena)
                 .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
     }
 
