@@ -1,17 +1,14 @@
 package com.bienestar.admin.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import com.bienestar.admin.filter.JwtFilter;
-
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtFilter jwtFilter;
+    //@Autowired
+    //private JwtFilter jwtFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -20,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest().permitAll();
                 /*.antMatchers("/api/usuarios/login").permitAll() // permite login sin token
                 .anyRequest().authenticated() // requiere token para todo lo demás
-            .and()
+            //.and()
             .formLogin().disable() // desactiva formulario login por defecto
             .httpBasic().disable(); //  evita que use autenticación básica
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class); 
