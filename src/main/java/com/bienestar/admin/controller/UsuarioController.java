@@ -34,6 +34,7 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> datos) {
+        System.out.println("===> Se recibió petición de login: " + datos);
         try {
             Usuario usuario = usuarioService.autenticar(
                 datos.get("correo"), datos.get("contrasena"));
