@@ -50,7 +50,7 @@ jobs:
         run: mvn clean install
 
       - name: Move JAR to root for deployment
-        run: cp modulo-administrativo/target/app.jar ./app.jar
+        run: cp target/app.jar ./app.jar
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
